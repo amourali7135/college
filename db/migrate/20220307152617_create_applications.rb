@@ -8,8 +8,6 @@ class CreateApplications < ActiveRecord::Migration[6.1]
       t.string :essay_question_three
       t.text :third_essay
       t.integer :status
-      t.datetime :created_at
-      t.datetime :updated_at
       t.references :program, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 

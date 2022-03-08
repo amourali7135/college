@@ -26,7 +26,7 @@ class CreatePrograms < ActiveRecord::Migration[6.1]
       t.boolean :certificate_awarded, null: false
       t.boolean :nationals_only, null: false
       t.boolean :active, null: false
-      t.integer :time_requirement
+      t.string :time_requirement
       t.boolean :job_guaranteed, null: false
       t.string :category
       t.boolean :relocation_assistance, null: false
