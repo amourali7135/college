@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-
   end
   
 get 'about', to: 'pages#about', as: 'about'
@@ -18,5 +17,5 @@ get 'business_dashboard', to: 'pages#business_dashboard', as: 'business_dashboar
 get 'user_dashboard', to: 'pages#user_dashboard', as: 'user_dashboard'
 get 'team', to: 'pages#team', as: 'team'
 get 'blog', to: 'pages#blog', as: 'blog'
-get 'career' to: 'pages#career', as: 'career_options'
+get 'career', to: 'pages#career', as: 'career_options'
 end
