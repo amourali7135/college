@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     resources :applications, except: :index
   end
 
-  resources :users, only: [:show] do
-    #put logic here for employer show pages only
-  end
+  # is this the way dude?  
+  # resources :users, only: [:show] do
+  #   #put logic here for employer show pages only
+  # end
   
 get 'about', to: 'pages#about', as: 'about'
 get "help", to: "pages#help", as: 'help'
@@ -19,4 +20,5 @@ get 'user_dashboard', to: 'pages#user_dashboard', as: 'user_dashboard'
 get 'team', to: 'pages#team', as: 'team'
 get 'blog', to: 'pages#blog', as: 'blog'
 get 'career', to: 'pages#career', as: 'career_options'
+get 'businesses', to: 'pages#businesses', as: 'businesses'
 end
