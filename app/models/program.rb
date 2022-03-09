@@ -2,23 +2,23 @@ class Program < ApplicationRecord
   belongs_to :user
   has_many :applications
 
-  validates :title, presence: true
-  validates :headline, presence: true
+  validates :title, presence: true, length: { minimum: 10 }
+  validates :headline, presence: true, length: { minimum: 10 }
   validates :description, presence: true, length: { minimum: 10, maximum: 1500 }
   validates :application_due_date, presence: true, if: !@program.rolling?
   validates :location, presence: true
   validates :spots, presence: true
-  validates :requirements, presence: true
+  validates :requirements, presence: true, length: { minimum: 10 }
   validates :length, presence: true
-  validates :minimum_age, presence: true
+  validates :minimum_age, presence: true, length: { minimum: 12 }
   validates :visa_sponsorship, inclusion: [true, false], exclusion: [nil]
   validates :start_date, presence: true
   validates :virtual_components, inclusion: [true, false], exclusion: [nil]
   validates :housing_provided, inclusion: [true, false], exclusion: [nil]
   validates :essay, inclusion: [true, false], exclusion: [nil]
   validates :essay_question_one, presence: true, if: @program.essay == true
-  validates :essay_question_two
-  validates :essay_question_three
+  # validates :essay_question_two
+  # validates :essay_question_three
   validates :salary, inclusion: [true, false], exclusion: [nil]
   validates :salary_paid, presence: true, if: @program.salary
   validates :cost, presence: true
@@ -36,5 +36,9 @@ class Program < ApplicationRecord
 
   def self.length
     []
+  end
+
+  def active
+    @programs = Program.where(status: :active)
   end
 end
