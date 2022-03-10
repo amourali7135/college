@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_152738) do
     t.date "start_date"
     t.boolean "virtual_components", null: false
     t.boolean "housing_provided", null: false
-    t.boolean "essay", null: false
+    t.boolean "essay_one_needed", null: false
+    t.boolean "essay_two_needed", null: false
+    t.boolean "essay_three_needed", null: false
     t.string "essay_question_one"
     t.string "essay_question_two"
     t.string "essay_question_three"
