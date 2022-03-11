@@ -1,0 +1,32 @@
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h2>Apply to your dream position and improve your career</h2>
+
+      <%= simple_form_for [@program, @application] do |f|%>
+       <p>Upon applying, the program manager will receive your personal information and subsequently decide upon your application as soon as they can</p>
+      <div id="essay_one" <% if @program.essay_one_needed? %> >
+      <%= f.input :first_essay, label: "Applications to this program require an essay or more to be considered.  The program requires you to answer the following essay question:", 
+      placeholder: "4-week long carpeting crash course" %>
+      <span><%= @program.essay_question_one %></span>
+      </div>
+      <div id="essay_one" <% if @program.essay_two_needed? %>>
+      <%= f.input :second_essay, label: "Applications to this program require an essay or more to be considered.  The program requires you to answer the following essay question:", 
+      placeholder: "4-week long carpeting crash course" %>
+      <span><%= @program.essay_question_two %></span>
+      </div>
+      <div id="essay_one" <% if @program.essay_three_needed? %>>
+      <%= f.input :third_essay, label: "Applications to this program require an essay or more to be considered.  The program requires you to answer the following essay question:", 
+      placeholder: "4-week long carpeting crash course" %>
+      <span><%= @program.essay_question_three %></span>
+      </div>
+      <%= f.input :active, as: :hidden, value: true %>
+      <div style="text-align:center">
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+
+

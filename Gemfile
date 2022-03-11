@@ -33,12 +33,24 @@ gem 'devise'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+# Run in root to find issues against Rails best practices!  Clutch.
+gem "rails_best_practices"
+# Prevent dangerous migrations.
+gem "strong_migrations"
+# MEmory usage in app.  For development only though?  Check when on Heroku.  
+gem 'memory_profiler'
+gem 'stackprof'
+
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -46,10 +58,19 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rack-mini-profiler', require: false
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Makes spring work better by listening for changes.
+  gem 'spring-watcher-listen'
+  # For having a better error page in development with console.
+  gem "better_errors"
+  # For tracing variables that lead to app crashing in better errors screen.
+  gem "binding_of_caller"
+  # Fasterer was installed via CLI.
+  # Find N +1 queries more efficiently
+  gem 'bullet'
 end
 
 group :test do
@@ -58,7 +79,12 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+  # Use fake data in app.
+  gem "faker"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

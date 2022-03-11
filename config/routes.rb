@@ -21,4 +21,5 @@ get 'team', to: 'pages#team', as: 'team'
 get 'blog', to: 'pages#blog', as: 'blog'
 get 'career', to: 'pages#career', as: 'career_options'
 get 'businesses', to: 'pages#businesses', as: 'businesses'
+get 'registration', to: 'pages#registration', as: 'registration'
 end
