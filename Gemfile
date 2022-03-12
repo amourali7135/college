@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
@@ -68,7 +68,7 @@ group :development do
   gem "better_errors"
   # For tracing variables that lead to app crashing in better errors screen.
   gem "binding_of_caller"
-  # Fasterer was installed via CLI.
+  # Fasterer was installed via CLI.  Just type fasterer into the Terminal and it'll launch.  
   # Find N +1 queries more efficiently
   gem 'bullet'
 end

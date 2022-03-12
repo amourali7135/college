@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :about, :help, :contact, :team, :blog, :career, :businesses ]
+  skip_before_action :authenticate_user!, only: [ :home, :about, :help, :contact, :team, :blog, :career, :businesses, :registration ]
 
   def home
   end
@@ -38,6 +38,9 @@ class PagesController < ApplicationController
 
   def businesses
     @users = User.where(emplopyer: true)
+  end
+
+  def registration
   end
 
 end
