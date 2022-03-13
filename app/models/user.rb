@@ -12,17 +12,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :location, presence: true
-  validates :organization_name, presence: true, if: :Employer?#, if: :employer_application?
+  validates :organization_name, presence: true, if: :Employer?
   #Is age necessary though?  Fuark.  
-  validates :age, presence: true, numericality: { only_integer: true }, if: :Student?# :student_application?
+  validates :age, presence: true, numericality: { only_integer: true }, if: :Student?
   validates :user_type, presence: true
 
-  # def employer_application?
-  #   return true if params[:employer] == true
-  # end
-
-  # def student_application?
-  #   return true if params[:employer] != true
-  # end
-         
 end

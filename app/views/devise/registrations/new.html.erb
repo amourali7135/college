@@ -10,19 +10,20 @@
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { autocomplete: "email" }, 
+                    placeholder: "123@abc.com" %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :user_type, collection: User.user_types.keys, label: "Are you a prospective employer or a student?", input_html: {id: :user_type_pulldown} %>
         <div id="organization_details" style="display:none;">
-        <%= f.input :organization_name, required: true %>
+        <%= f.input :organization_name, required: true, label: "What's the name of your organization?", placeholder: "Plumbing Incorporated" %>
         </div>
         <div id="student_details" style="display:none;">
-        <%= f.input :bio %>
-        <%= f.input :age %>
-        <%= f.input :goal %>
+        <%= f.input :age, required: true %>
+        <%= f.input :bio, label: "Please tell us and a potential employer a little bit about yourself" %>
+        <%= f.input :goal, label: "What's your primary career related goal?" %>
         </div>
-        <%= f.input :location %>
+        <%= f.input :location, placeholder: "Los Angeles, California", label: "Where are you located?" %>
         <%= f.input :admin, as: :hidden, value: false %>
         <%= f.input :password,
                     required: true,

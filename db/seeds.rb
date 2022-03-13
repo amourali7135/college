@@ -13,7 +13,7 @@ user = User.new(
   first_name: "Amir", 
   last_name: "Mourali", 
   location: "Singapore", 
-  employer: true, 
+  user_type: "Employer", 
   organization_name: "Fake organization name"
 )
 user.save!
@@ -23,9 +23,10 @@ user = User.new(
   first_name: "Amir", 
   last_name: "Mourali", 
   location: "Singapore",
-  employer: false, 
-  age: 23
-
+  user_type: "Student", 
+  age: 23, 
+  bio: Faker::Lorem.sentences(number: 3),
+  goal: Faker::Lorem.sentences(number: 1)
 )
 user.save!
 puts 'Finished!'
