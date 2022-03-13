@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users#, controllers: { registrations: "registrations" }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
@@ -21,5 +21,5 @@ get 'team', to: 'pages#team', as: 'team'
 get 'blog', to: 'pages#blog', as: 'blog'
 get 'career', to: 'pages#career', as: 'career_options'
 get 'businesses', to: 'pages#businesses', as: 'businesses'
-get 'registration', to: 'pages#registration', as: 'registration'
+# get 'registration', to: 'pages#registration', as: 'registration'
 end

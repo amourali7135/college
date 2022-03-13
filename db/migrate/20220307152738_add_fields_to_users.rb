@@ -9,5 +9,6 @@ class AddFieldsToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :bio, :text
     add_column :users, :age, :integer
     add_column :users, :goal, :text
+    add_column :users, :user_type, :integer
   end
 end

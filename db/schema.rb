@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_152738) do
     t.text "bio"
     t.integer "age"
     t.text "goal"
+    t.integer "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
