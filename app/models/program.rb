@@ -31,13 +31,18 @@ class Program < ApplicationRecord
   validates :job_guaranteed, inclusion: [true, false], exclusion: [nil]
   validates :category, presence: true
   validates :relocation_assistance, inclusion: [true, false], exclusion: [nil]
+  # validates :application_due_date, :future_date
+  validate :future_date_application?
+  validate :future_date_start?
+
+  enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }# _default: 0
 
   def self.categories
-    []
+    ['Air conditioning and heating', 'Carpeting', 'Construction', 'Plumbing', 'HVAC']
   end
 
   def self.length
-    ['1-2 weeks', '2-4 weeks', '1 month', '1-2 months', '2-3 months', '3-6 months', '6-12 months', '12-18 months', '18-24 months', '24-36 months', '36+ months']
+    ['Less than one week', '1-2 weeks', '2-4 weeks', '1 month', '1-2 months', '2-3 months', '3-6 months', '6-12 months', '12-18 months', '18-24 months', '24-36 months', '36+ months']
   end
 
   def self.time_requirement
@@ -45,27 +50,39 @@ class Program < ApplicationRecord
   end
 
   def active
-    @programs = Program.where(status: :active)
+    @programs = Program.where(status: "Active")
   end
 
   def salary?
-    return true if params[:salary] == true
+    return true if salary == true
   end
 
   def essay_one?
-    return true if params[:essay_one_needed] == true
+    return true if essay_one_needed == true
   end
 
   def essay_two?
-    return true if params[:essay_two_needed] == true
+    return true if essay_two_needed == true
   end
 
   def essay_three?
-    return true if params[:essay_three_needed] == true
+    return true if essay_three_needed == true
   end
 
   def rolling?
-    return true if params[:rolling] != true
+    return true if rolling == true
   end
-  
+
+  def future_date_application?
+    if application_due_date < Date.today
+      errors.add(:application_due_date, "The due date must be in the future!")
+    end
+  end
+
+  def future_date_start?
+    if start_date < Date.today
+      errors.add(:start_date, "The start date must be in the future!")
+    end
+  end
+
 end

@@ -18,6 +18,7 @@ class ProgramsController < ApplicationController
       flash[:error] = "There was an error, please try again!"
       render "new"
     end
+    # raise
   end
 
   def show
@@ -54,6 +55,6 @@ class ProgramsController < ApplicationController
 
   def program_params
     params.require(:program).permit(:title, :headline, :description, :rolling, :application_due_date, :location,
-                                    :remote, :spots, :requirements, :length, :minimum_age, :visa_sponsorship, :start_date, :virtual_components, :housing_provided, :essay, :essay_question_one, :essay_question_two, :essay_question_three, :salary, :salary_paid, :cost, :certificate_awarded, :nationals_only, :active, :time_requirement, :job_guaranteed, :category, :relocation_assistance)
+                                    :remote, :spots, :requirements, :length, :minimum_age, :visa_sponsorship, :start_date, :virtual_components, :housing_provided, :essay, :essay_question_one, :essay_question_two, :essay_question_three, :salary, :salary_paid, :cost, :certificate_awarded, :nationals_only, :active, :time_requirement, :job_guaranteed, :category, :relocation_assistance, :essay_one_needed, :essay_two_needed, :essay_three_needed, :status)
   end
 end

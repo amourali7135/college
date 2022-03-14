@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_152738) do
     t.date "start_date"
     t.boolean "virtual_components", null: false
     t.boolean "housing_provided", null: false
-    t.boolean "essay_one_needed", null: false
-    t.boolean "essay_two_needed", null: false
-    t.boolean "essay_three_needed", null: false
+    t.boolean "essay_one_needed", default: false, null: false
+    t.boolean "essay_two_needed", default: false, null: false
+    t.boolean "essay_three_needed", default: false, null: false
     t.string "essay_question_one"
     t.string "essay_question_two"
     t.string "essay_question_three"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_152738) do
     t.integer "cost"
     t.boolean "certificate_awarded", null: false
     t.boolean "nationals_only", null: false
-    t.boolean "active", null: false
+    t.integer "status"
     t.string "time_requirement"
     t.boolean "job_guaranteed", null: false
     t.string "category"
