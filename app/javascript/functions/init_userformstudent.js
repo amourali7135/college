@@ -10,5 +10,4 @@ const initUserformstudent = () => {
     }
         console.log("hello there again!")
     }
-
     export { initUserformstudent };

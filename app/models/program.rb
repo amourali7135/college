@@ -38,7 +38,7 @@ class Program < ApplicationRecord
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }# _default: 0
 
   def self.categories
-    ['Air conditioning and heating', 'Carpeting', 'Construction', 'Plumbing', 'HVAC']
+    ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', ]
   end
 
   def self.length
@@ -84,5 +84,12 @@ class Program < ApplicationRecord
       errors.add(:start_date, "The start date must be in the future!")
     end
   end
+
+  # def auto_finish
+  #   if application_due_date > Date.today
+  #     @program.status.Permanently_closed!
+  #     ...set this up as a que job for later.
+  #   end
+  # end
 
 end
