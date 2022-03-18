@@ -59,9 +59,9 @@ const initProgramform = () => {
   if (visaPrompt) {
     visaPrompt.addEventListener("change", function () {
         if (visaPrompt.checked) {
-          document.getElementById("visa_prompt").style.display = "block";
-        } else {
           document.getElementById("visa_prompt").style.display = "none";
+        } else {
+          document.getElementById("visa_prompt").style.display = "block";
         }
       });
   }

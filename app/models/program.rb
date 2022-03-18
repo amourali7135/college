@@ -5,14 +5,14 @@ class Program < ApplicationRecord
   validates :title, presence: true, length: { minimum: 10 }
   validates :headline, presence: true, length: { minimum: 10 }
   validates :description, presence: true, length: { minimum: 10, maximum: 1500 }
-  validates :application_due_date, presence: true, if: :rolling
+  validates :application_due_date, presence: true, if: :rolling?
+  validates :start_date, presence: true, if: :rolling?
   validates :location, presence: true
   validates :spots, presence: true
   validates :requirements, presence: true, length: { minimum: 10 }
   validates :length, presence: true
   validates :minimum_age, presence: true, length: { minimum: 12 }
   validates :visa_sponsorship, inclusion: [true, false], exclusion: [nil]
-  validates :start_date, presence: true, if: :rolling?
   validates :virtual_components, inclusion: [true, false], exclusion: [nil]
   validates :housing_provided, inclusion: [true, false], exclusion: [nil]
   validates :essay_one_needed, inclusion: [true, false], exclusion: [nil]
@@ -70,7 +70,7 @@ class Program < ApplicationRecord
   end
 
   def rolling?
-    return true if rolling == true
+    return true if rolling == false
   end
 
   def future_date_application?
