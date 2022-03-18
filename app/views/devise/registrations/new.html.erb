@@ -23,7 +23,8 @@
         <%= f.input :bio, label: "Please tell us and a potential employer a little bit about yourself" %>
         <%= f.input :goal, label: "What's your primary career related goal?" %>
         </div>
-        <%= f.input :location, placeholder: "Los Angeles, California", label: "Where are you located?" %>
+        <%= f.input :location, wrapper_html: { id: :location_label },placeholder: "Los Angeles, California", label: "Where is your program located?" %>
+        <%= f.input :photo, as: :file, wrapper_html: { id: :photo_part,  style: "display:none;" } %>
         <%= f.input :admin, as: :hidden, value: false %>
         <%= f.input :password,
                     required: true,

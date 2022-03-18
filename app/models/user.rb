@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :programs
   has_many :applications
+  has_one_attached :photo
 
   enum user_type: { Employer: 0, Student: 1 }#, default: :nil
 
@@ -16,5 +17,6 @@ class User < ApplicationRecord
   #Is age necessary though?  Fuark.  
   validates :age, presence: true, numericality: { only_integer: true }, if: :Student?
   validates :user_type, presence: true
+  # validates :photo, 
 
 end

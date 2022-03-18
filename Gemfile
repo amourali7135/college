@@ -40,6 +40,11 @@ gem "strong_migrations"
 # MEmory usage in app.  For development only though?  Check when on Heroku.  
 gem 'memory_profiler'
 gem 'stackprof'
+# For image uploads...for now at least.
+gem 'cloudinary'
+# For easy active storage + photo validations 
+gem 'active_storage_validations'
+
 
 group :development, :test do
   gem 'pry-byebug'
