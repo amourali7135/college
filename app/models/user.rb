@@ -17,6 +17,6 @@ class User < ApplicationRecord
   #Is age necessary though?  Fuark.  
   validates :age, presence: true, numericality: { only_integer: true }, if: :Student?
   validates :user_type, presence: true
-  # validates :photo, 
+  validates :photo, attached: true, size: { less_than: 5.megabytes , message: 'Your photo must be less than 5 mb' }
 
 end

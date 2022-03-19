@@ -18,12 +18,12 @@
         <div id="organization_details" style="display:none;">
         <%= f.input :organization_name, required: true, label: "What's the name of your organization?", placeholder: "Plumbing Incorporated" %>
         </div>
+        <%= f.input :location, required: true, wrapper_html: { id: :location_label, style: "display:none" },placeholder: "Los Angeles, California", label: "Placeholder label?" %>
         <div id="student_details" style="display:none;">
         <%= f.input :age, required: true %>
-        <%= f.input :bio, label: "Please tell us and a potential employer a little bit about yourself" %>
+        <%= f.input :bio, label: "Please tell us and potentially the heads of programs a little bit about yourself" %>
         <%= f.input :goal, label: "What's your primary career related goal?" %>
         </div>
-        <%= f.input :location, wrapper_html: { id: :location_label },placeholder: "Los Angeles, California", label: "Where is your program located?" %>
         <%= f.input :photo, as: :file, wrapper_html: { id: :photo_part,  style: "display:none;" } %>
         <%= f.input :admin, as: :hidden, value: false %>
         <%= f.input :password,
