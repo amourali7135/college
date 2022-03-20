@@ -147,6 +147,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    htmlbeautifier (1.4.1)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -372,6 +373,7 @@ DEPENDENCIES
   faker
   font-awesome-sass
   guard-rspec
+  htmlbeautifier
   jbuilder (~> 2.7)
   launchy
   listen (~> 3.3)

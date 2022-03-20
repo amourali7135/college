@@ -44,6 +44,8 @@ gem 'stackprof'
 gem 'cloudinary'
 # For easy active storage + photo validations 
 gem 'active_storage_validations'
+# To try and get this shit working.  
+# gem 'htmlbeautifier'
 
 
 group :development, :test do
