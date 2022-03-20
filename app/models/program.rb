@@ -11,7 +11,7 @@ class Program < ApplicationRecord
   validates :spots, presence: true
   validates :requirements, presence: true, length: { minimum: 10 }
   validates :length, presence: true
-  validates :minimum_age, presence: true, length: { minimum: 12 }
+  validates :minimum_age, presence: true, numericality: { only_integer: true,  greater_than: 12 }
   validates :visa_sponsorship, inclusion: [true, false], exclusion: [nil]
   validates :virtual_components, inclusion: [true, false], exclusion: [nil]
   validates :housing_provided, inclusion: [true, false], exclusion: [nil]
@@ -26,18 +26,18 @@ class Program < ApplicationRecord
   validates :cost, presence: true
   validates :certificate_awarded, inclusion: [true, false], exclusion: [nil]
   validates :nationals_only, inclusion: [true, false], exclusion: [nil]
-  validates :active, inclusion: [true, false], exclusion: [nil]
+  # validates :active, inclusion: [true, false], exclusion: [nil]
   validates :time_requirement, presence: true
   validates :job_guaranteed, inclusion: [true, false], exclusion: [nil]
   validates :category, presence: true
   validates :relocation_assistance, inclusion: [true, false], exclusion: [nil]
   # validates :application_due_date, :future_date
   validate :future_date_application?
-  validate :future_date_start?
+  validate :future_date_start?, if: :rolling?
 
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }# _default: 0
 
-  def self.categories
+  def self.category
     ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', ]
   end
 

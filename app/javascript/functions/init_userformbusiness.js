@@ -6,7 +6,7 @@ const initUserformbusiness = () => {
     userRoleInput.addEventListener("change", function () {
       if (userRoleInput.value == "Employer") {
         document.getElementById("organization_details").style.display = "block";
-        photoPart.firstChild.innerText = "Please upload your organization's logo";
+        photoPart.firstChild.innerText = "Please upload your organization's logo  *";
         photoPart.style.display = "block";
         locationSection.style.display = "block";
         locationSection.firstChild.textContent =
@@ -14,6 +14,7 @@ const initUserformbusiness = () => {
       } else {
         document.getElementById("organization_details").style.display = "none";
         locationSection.style.display = "none";
+        photoPart.style.display = "none";
       }
     });
   }

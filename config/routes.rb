@@ -6,11 +6,7 @@ Rails.application.routes.draw do
   resources :programs do
     resources :applications, except: :index
   end
-
-  # is this the way dude?  
-  # resources :users, only: [:show] do
-  #   #put logic here for employer show pages only
-  # end
+  
   
 get 'about', to: 'pages#about', as: 'about'
 get "help", to: "pages#help", as: 'help'
