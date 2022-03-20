@@ -1,8 +1,9 @@
 class ProgramsController < ApplicationController
   before_action :set_program, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @programs = Program.where(active: true)
+    @programs = Program.where(status: :Active)
   end
 
   def new
@@ -22,11 +23,9 @@ class ProgramsController < ApplicationController
   end
 
   def show
-    # @program = Program.find(params[:id])
   end
 
   def update
-    # @program = program.find(params[:id])
     if @program.update(program_params)
       flash[:notice] = "You've successfully updated your program!"
       redirect_to @program # or dashboard?
@@ -37,14 +36,12 @@ class ProgramsController < ApplicationController
   end
 
   def destroy
-    # @program = program.find(params[:id])
     @program.destroy
     flash[:notice] = "This program was successfully deleted!"
     redirect_to business_dashboard_path
   end
 
   def edit
-    # @program = program.find(params[:id])
   end
 
   private

@@ -35,7 +35,7 @@ class Program < ApplicationRecord
   validate :future_date_application?
   validate :future_date_start?, if: :rolling?
 
-  enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }# _default: 0
+  enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 
   def self.category
     ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', ]

@@ -1,7 +1,18 @@
 <section class="program-index-search">
 </section>
-<section class="program-index-card">
+<section class="program-index-cards">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-5">
+        <% @programs.each do |program| %>
+          <%= render partial: 'shared/program_card_index', locals: {program: program} %>
+        <% end %>
+      </div>
+      <div class="col-12 col-lg-7">
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 <section class="program-index-info">
 </section>
-
