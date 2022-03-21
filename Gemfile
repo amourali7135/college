@@ -46,6 +46,8 @@ gem 'cloudinary'
 gem 'active_storage_validations'
 # To try and get this shit working.  
 gem 'htmlbeautifier'
+# Replace stupid other linter
+gem 'erb_lint'
 
 
 group :development, :test do

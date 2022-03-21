@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
   before_action :set_program, only: %i[show edit update destroy]
-  before action :set_application, only: %i[show edit update destroy]
+  # before action :set_application, only: %i[show edit update destroy]
+  # before action :set_application, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
 
@@ -10,7 +11,7 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @program = Program.find(params[:program_id])
+    @program = Program.find(params[:id])
     @application.program = @program
     if @application.save
       flash[:notice] = "You've successfully submitted your application!"
@@ -18,12 +19,15 @@ class ApplicationsController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   def edit
+    @application = Application.find(params[:id])
   end
 
   def update
+    @application = Application.find(params[:id])
     if @application.update(application_params)
       flash[:notice] = "You've successfully updated your application"
       redirect_to user_dashboard_path
@@ -34,9 +38,11 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    @application = Application.find(params[:id])
   end
 
   def destroy
+    @application = Application.find(params[:id])
     @application.destroy
     flash[:notice] = 'Your application was successfully deleted!'
     redirect_to @application.program
@@ -63,6 +69,8 @@ class ApplicationsController < ApplicationController
         :essay_question_three,
         :third_essay,
         :status,
+        :program_id,
+        :user_id, 
       )
   end
 end

@@ -3,7 +3,8 @@ class ProgramsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @programs = Program.where(status: :Active)
+    @programs = Program.where(status: :Active).includes([:user])
+    # @program = Program.find(params[:id])
   end
 
   def new

@@ -1,0 +1,12 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% @applications.each do |application| %>
+          <%#= render partial: 'shared/program_card_index', locals: {program: program} %>
+          <%= application.status %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

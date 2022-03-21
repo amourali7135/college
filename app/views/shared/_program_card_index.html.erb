@@ -1,8 +1,13 @@
-<div class="card-program">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-program-infos">
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+<%#= link_to root_path do %>
+  <div class="card-program">
+    <%= cl_image_tag program.user.photo.key, height: 300, width: 400, crop: :fill, :alt=>"Business Logo" %>
+    <div class="card-program-infos">
+      <h2><%= program.title %></h2>
+      <p><%= program.headline %></p>
+      <p><%= program.description %></p>
+      <p><%= program.location %></p>
+      <p><%= link_to 'Show', program, remote: true %></p>
+      <p><%#= link_to render(:partial => 'shared/program_card_index_info'), remote: true %></p>
+    </div>
   </div>
-</div>
-
+  <%# end %>
