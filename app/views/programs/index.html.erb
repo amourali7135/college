@@ -3,12 +3,12 @@
 <section class="program-index-cards">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-5", id="current_program">
+      <div class="col-12 col-lg-5">
         <% @programs.each do |program| %>
           <%= render partial: 'shared/program_card_index', locals: {program: program} %>
         <% end %>
       </div>
-      <div class="col-12 col-lg-7">
+      <div id="current_program", class="col-12 col-lg-7">
         <%# @programs.each do |program| %>
           <%#= render partial: 'shared/program_card_index_info', locals: {program: program} %>
           <%# end %>

@@ -1,0 +1,4 @@
+<p> <%= @program.title %> </p>
+<p> <%= @program.headline %> </p>
+<p> <%= @program.description %> </p>
+<p> <%= link_to 'Apply to ths program', new_program_application_path(@program, @application), class: 'btn btn-primary' %> </p>
