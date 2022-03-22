@@ -1,25 +1,32 @@
 class ApplicationsController < ApplicationController
-  before_action :set_program, only: %i[show edit update destroy]
+  before_action :set_program, only: %i[show edit update destroy new create]
   # before action :set_application, only: %i[show edit update destroy]
   # before action :set_application, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
 
   def new
+    @program = Program.find(params[:program_id])
     @application = Application.new
   end
-
+  
   def create
+    @program = Program.find(params[:program_id])
     @application = Application.new(application_params)
-    @program = Program.find(params[:id])
+    @application.essay_question_one = @program.essay_question_one #if @program.essay_one_needed
+    @application.essay_question_two = @program.essay_question_two# if @program.essay_two_needed
+    @application.essay_question_three = @program.essay_question_three# if @program.essay_three_needed
+    @application.user_id = current_user.id
     @application.program = @program
     if @application.save
       flash[:notice] = "You've successfully submitted your application!"
-      redirect_to user_dashboard_path
+      redirect_to @program
     else
+      flash[:notice] = "There was an error, please try again!"
       render 'new'
+      # render new_program_application_path(@program, @application)
+      raise
     end
-
   end
 
   def edit
@@ -51,7 +58,7 @@ class ApplicationsController < ApplicationController
   private
 
   def set_program
-    @program = Program.find(params[:id])
+    @program = Program.find(params[:program_id])
   end
 
   def set_application

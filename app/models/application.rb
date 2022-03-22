@@ -9,17 +9,14 @@ class Application < ApplicationRecord
   validates :third_essay, length: {minimum: 50, maximum: 1500}, presence: true, if: :essay_three?
 
   def essay_one?
-    # return true if params[:essay_one_needed] == true
-    return true if essay_one_needed == true
+    return true if self.program.essay_one_needed
   end
 
   def essay_two?
-    # return true if params[:essay_two_needed] == true
-    return true if essay_two_needed == true
+    return true if self.program.essay_two_needed
   end
 
   def essay_three?
-    # return true if params[:essay_three_needed] == true
-    return true if essay_three_needed == true
+    return true if self.program.essay_three_needed 
   end
 end

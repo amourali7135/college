@@ -34,7 +34,7 @@ user.photo.attach(io: File.open('app/assets/images/bourdain.jpg'), filename: 'bo
 user.save!
 puts 'Finished with the users!'
 
-puts 'Creating 2 fake programs...'
+puts 'Creating 4 fake programs...'
 program = Program.new(
   title: "Fake program one", 
   headline: "Become a faker now!", 
@@ -93,6 +93,73 @@ program = Program.new(
   essay_question_two: "Fake essay two", 
   essay_three_needed: true, 
   essay_question_three: "Fake essay three", 
+  salary: false, 
+  salary_paid: 0, 
+  cost: 0, 
+  certificate_awarded: true, 
+  nationals_only: true, 
+  # status: Active, 
+  time_requirement: Program.time_requirement.sample(1), 
+  job_guaranteed: false, 
+  category: Program.category.sample(1), 
+  relocation_assistance: false,
+  user_id: User.first.id
+)
+program.save!
+
+program = Program.new(
+  title: "Fake program two", 
+  headline: "Become a faker now...again!", 
+  description: Faker::Lorem.sentences(number: 3), 
+  rolling: true, 
+  application_due_date: Faker::Date.forward(days: 90), 
+  location: "Brunei", 
+  remote: true, 
+  spots: 15, 
+  requirements: Faker::Lorem.sentences(number: 3), 
+  length: Program.length.sample(1), 
+  minimum_age: 16, 
+  visa_sponsorship: false, 
+  # start_date: Faker::Date.forward(days: 90), 
+  virtual_components: false, 
+  housing_provided: false, 
+  essay_one_needed: true,  
+  essay_two_needed: false,
+  essay_three_needed: false,
+  essay_question_one: "Fake essay question one",
+  salary: false, 
+  salary_paid: 0, 
+  cost: 0, 
+  certificate_awarded: true, 
+  nationals_only: true, 
+  # status: Active, 
+  time_requirement: Program.time_requirement.sample(1), 
+  job_guaranteed: false, 
+  category: Program.category.sample(1), 
+  relocation_assistance: false,
+  user_id: User.first.id
+)
+program.save!
+
+program = Program.new(
+  title: "Fake program two", 
+  headline: "Become a faker now...again!", 
+  description: Faker::Lorem.sentences(number: 3), 
+  rolling: true, 
+  application_due_date: Faker::Date.forward(days: 90), 
+  location: "Brunei", 
+  remote: true, 
+  spots: 15, 
+  requirements: Faker::Lorem.sentences(number: 3), 
+  length: Program.length.sample(1), 
+  minimum_age: 16, 
+  visa_sponsorship: false, 
+  # start_date: Faker::Date.forward(days: 90), 
+  virtual_components: false, 
+  housing_provided: false, 
+  essay_one_needed: false,  
+  essay_two_needed: false,
+  essay_three_needed: false,
   salary: false, 
   salary_paid: 0, 
   cost: 0, 
