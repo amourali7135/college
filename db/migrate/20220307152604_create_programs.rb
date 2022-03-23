@@ -30,7 +30,8 @@ class CreatePrograms < ActiveRecord::Migration[6.1]
       t.integer :status
       t.string :time_requirement
       t.boolean :job_guaranteed, null: false
-      t.string :category
+      t.string :career_category
+      t.string :program_format
       t.boolean :relocation_assistance, null: false
       t.references :user, null: false, foreign_key: true
 

@@ -1,0 +1,19 @@
+var programId = '<%= @program.id %>';
+function toggleLikeButton(programId, innerHTML) {
+let likeButton = document.querySelector(`.like-icon[data-id='${programId}']`)
+likeButton.classList.toggle('red');
+}
+toggleLikeButton(programId);
+
+<%# function toggleLikeButton(programId, favoritedProgram) {
+let likeButton = document.querySelector(`.like-icon[data-id='${programId}']`)
+likeButton.classList.toggle('red');
+if (likeButton.classList.contains('red')) {
+const favoriteList = document.querySelector('.favorites');
+favoriteList.insertAdjacentHTML('beforeend', favoritedProgram)
+}
+else {
+document.querySelector(`.favorite[data-id='${programId}']`).remove()
+}
+}
+toggleLikeButton(programId, '<%= j render "programs/program", program: @program %>'); %>

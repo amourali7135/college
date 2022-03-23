@@ -23,6 +23,7 @@ class PagesController < ApplicationController
   
   def user_dashboard
   @applications = Application.where(user_id: current_user.id)#.includes([:program])
+  @favorite_programs = current_user.favorited_by_type('Program')
     if !current_user || current_user.Employer?
       flash[:notice] = "Only students can access a user dashboard"
       redirect_to root_path

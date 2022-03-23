@@ -36,8 +36,8 @@ gem 'simple_form'
 # Run in root to find issues against Rails best practices!  Clutch.
 gem "rails_best_practices"
 # Prevent dangerous migrations.
-gem "strong_migrations"
-# MEmory usage in app.  For development only though?  Check when on Heroku.  
+# gem "strong_migrations"
+# Memory usage in app.  For development only though?  Check when on Heroku.  
 gem 'memory_profiler'
 gem 'stackprof'
 # For image uploads...for now at least.
@@ -48,7 +48,8 @@ gem 'active_storage_validations'
 gem 'htmlbeautifier'
 # Replace stupid other linter
 gem 'erb_lint'
-
+# For saving favorite programs and applications.
+gem 'acts_as_favoritor'
 
 group :development, :test do
   gem 'pry-byebug'

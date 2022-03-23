@@ -46,7 +46,16 @@ class ProgramsController < ApplicationController
     redirect_to business_dashboard_path
   end
 
-  def edit; end
+  def edit 
+  
+  end
+
+  def toggle_favorite
+    @program = Program.find_by(id: params[:id])
+    current_user.favorited?(@program) ? current_user.unfavorite(@program) : current_user.favorite(@program)
+    flash[:notice] = "You've successfully unliked this program" if current_user.unfavorite(@program)
+    flash[:notice] = "You've successfully liked this program" if current_user.favorite(@program)
+  end
 
   private
 

@@ -62,10 +62,10 @@ program = Program.new(
   cost: 0, 
   certificate_awarded: true, 
   nationals_only: true, 
-  # status: Active, 
   time_requirement: Program.time_requirement.sample(1), 
   job_guaranteed: false, 
-  category: Program.category.sample(1), 
+  career_category: Program.career_category.sample(1), 
+  program_format: Program.program_format.sample(1),
   relocation_assistance: false,
   user_id: User.first.id
 )
@@ -98,10 +98,10 @@ program = Program.new(
   cost: 0, 
   certificate_awarded: true, 
   nationals_only: true, 
-  # status: Active, 
   time_requirement: Program.time_requirement.sample(1), 
   job_guaranteed: false, 
-  category: Program.category.sample(1), 
+  career_category: Program.career_category.sample(1), 
+  program_format: Program.program_format.sample(1),
   relocation_assistance: false,
   user_id: User.first.id
 )
@@ -132,10 +132,10 @@ program = Program.new(
   cost: 0, 
   certificate_awarded: true, 
   nationals_only: true, 
-  # status: Active, 
   time_requirement: Program.time_requirement.sample(1), 
   job_guaranteed: false, 
-  category: Program.category.sample(1), 
+  career_category: Program.career_category.sample(1), 
+  program_format: Program.program_format.sample(1),
   relocation_assistance: false,
   user_id: User.first.id
 )
@@ -165,10 +165,10 @@ program = Program.new(
   cost: 0, 
   certificate_awarded: true, 
   nationals_only: true, 
-  # status: Active, 
   time_requirement: Program.time_requirement.sample(1), 
   job_guaranteed: false, 
-  category: Program.category.sample(1), 
+  career_category: Program.career_category.sample(1), 
+  program_format: Program.program_format.sample(1),
   relocation_assistance: false,
   user_id: User.first.id
 )

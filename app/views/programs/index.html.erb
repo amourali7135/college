@@ -1,4 +1,21 @@
 <section class="program-index-search">
+  <div class="container">
+    <p class="row justify-content-center">
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Show search and filtering options
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
+          <%= f.input :career_category, label: "Which career category are you looking for a program for?", collection: Program.career_category %>
+          <%#= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
+          <%= link_to "Reset", programs_path  %>
+          <%= f.submit 'Submit', class: 'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="program-index-cards">
   <div class="container">
@@ -9,13 +26,8 @@
         <% end %>
       </div>
       <div id="current_program", class="col-12 col-lg-7">
-        <%# @programs.each do |program| %>
-          <%#= render partial: 'shared/program_card_index_info', locals: {program: program} %>
-          <%# end %>
-        </div>
       </div>
     </div>
   </div>
-</section>
-<section class="program-index-info">
+</div>
 </section>

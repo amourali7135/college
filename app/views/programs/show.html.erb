@@ -1,3 +1,1 @@
-<h1>Testing again !</h1>
-<%#= link_to 'Apply to ths program', new_program_application_path(@program, @application), class: 'btn btn-primary' %>
-
+<%= render partial: 'programs/show', locals: {program: @program} %>

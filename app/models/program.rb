@@ -3,6 +3,7 @@ class Program < ApplicationRecord
   #  I had to do inverse of and accepts nested to let applications access program parent attributes for its validations
   has_many :applications, inverse_of: :program
   accepts_nested_attributes_for :applications
+  acts_as_favoritable
 
   validates :title, presence: true, length: { minimum: 10 }
   validates :headline, presence: true, length: { minimum: 10 }
@@ -31,7 +32,8 @@ class Program < ApplicationRecord
   # validates :active, inclusion: [true, false], exclusion: [nil]
   validates :time_requirement, presence: true
   validates :job_guaranteed, inclusion: [true, false], exclusion: [nil]
-  validates :category, presence: true
+  validates :career_category, presence: true
+  validates :program_format, presence: true
   validates :relocation_assistance, inclusion: [true, false], exclusion: [nil]
   # validates :application_due_date, :future_date
   validate :future_date_application?
@@ -39,8 +41,12 @@ class Program < ApplicationRecord
 
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 
-  def self.category
+  def self.career_category
     ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', ]
+  end
+
+  def self.program_format
+    ['Internship', 'Apprenticeship', 'Certification program', 'Degree', 'Remote program', 'Class',  ]
   end
 
   def self.length

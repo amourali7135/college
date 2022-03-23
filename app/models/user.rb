@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :programs
   has_many :applications
   has_one_attached :photo
+  acts_as_favoritor
 
   enum user_type: { Employer: 0, Student: 1 }#, default: :nil
 
