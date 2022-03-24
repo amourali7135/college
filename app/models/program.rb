@@ -3,7 +3,8 @@ class Program < ApplicationRecord
   #  I had to do inverse of and accepts nested to let applications access program parent attributes for its validations
   has_many :applications, inverse_of: :program
   accepts_nested_attributes_for :applications
-  acts_as_favoritable
+  acts_as_votable
+
 
   validates :title, presence: true, length: { minimum: 10 }
   validates :headline, presence: true, length: { minimum: 10 }

@@ -1,7 +1,26 @@
 <div class="section">
-  <h2> <%= @program.title %> </h2>
-  <p> <%= @program.headline %> </p>
-  <p> <%= @program.description %> </p>
-  <p> <%= link_to 'Apply to ths program', new_program_application_path(@program, @application), class: 'btn btn-primary' %> </p>
-  <%= link_to "like", toggle_favorite_program_path(program), remote: true, method: :post %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <%= cl_image_tag program.user.photo.key, height: 150, width: 200, crop: :fill, :alt=>"Business Logo" %>
+        <h2> <%= @program.title %> </h2>
+        <p> <%= @program.headline %> </p>
+        <p>Type of program: <%= @program.program_format %> </p>
+        <p>Description of the program: <%= @program.description %> </p>
+        <p>Location: <%= @program.location %> </p>
+        <p>Number of spots available: <%= @program.spots %> </p>
+        <p>Requirements for applicants: <%= @program.requirements %> </p>
+        <p>Length of program: <%= @program.length %> </p>
+        <p>Minimum age required for applicants: <%= @program.minimum_age %> </p>
+        <p>Program cost: <%= @program.cost %> </p>
+        <div class="row align-items-center justify-content-center py-2">
+          <div class="row">
+            <%= link_to 'like', like_program_path(@program), method: :put, class: 'btn btn-primary' %>
+            <%= link_to 'unlike', unlike_program_path(@program), method: :put, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <p> <%= link_to 'Apply to this program', new_program_application_path(@program, @application), class: 'btn btn-primary' %> </p>
+      </div>
+    </div>
+  </div>
 </div>

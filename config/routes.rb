@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :programs do
-    member { post 'toggle_favorite', to: 'programs#toggle_favorite' }
+    member do
+      put "like", to: "programs#like", as: 'like'
+      put "unlike", to: "programs#unlike", as: 'unlike'
+    end
     resources :applications, except: :index
   end
 

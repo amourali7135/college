@@ -49,7 +49,8 @@ gem 'htmlbeautifier'
 # Replace stupid other linter
 gem 'erb_lint'
 # For saving favorite programs and applications.
-gem 'acts_as_favoritor'
+gem 'acts_as_votable'
+
 
 group :development, :test do
   gem 'pry-byebug'

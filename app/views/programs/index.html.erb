@@ -10,8 +10,8 @@
         <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
           <%= f.input :career_category, label: "Which career category are you looking for a program for?", collection: Program.career_category %>
           <%#= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
-          <%= link_to "Reset", programs_path  %>
-          <%= f.submit 'Submit', class: 'btn btn-primary'%>
+          <%= link_to "Reset", programs_path, remote: true  %>
+          <%= f.submit 'Submit', class: 'btn btn-primatruery'%>
         <% end %>
       </div>
     </div>
@@ -25,9 +25,8 @@
           <%= render partial: 'shared/program_card_index', locals: {program: program} %>
         <% end %>
       </div>
-      <div id="current_program", class="col-12 col-lg-7">
+      <div id="current_program", class="col-12 col-lg-7 border">
       </div>
     </div>
   </div>
-</div>
 </section>

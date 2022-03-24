@@ -1,10 +1,10 @@
 class ProgramsController < ApplicationController
-  before_action :set_program, only: %i[show edit update destroy]
+  before_action :set_program, only: %i[show edit update destroy like unlike]
   skip_before_action :authenticate_user!, only: %i[index show]
+
 
   def index
     @programs = Program.where(status: :Active).includes([:user])
-    # @program = Program.find(params[:id])
   end
 
   def new
@@ -50,11 +50,16 @@ class ProgramsController < ApplicationController
   
   end
 
-  def toggle_favorite
-    @program = Program.find_by(id: params[:id])
-    current_user.favorited?(@program) ? current_user.unfavorite(@program) : current_user.favorite(@program)
-    flash[:notice] = "You've successfully unliked this program" if current_user.unfavorite(@program)
-    flash[:notice] = "You've successfully liked this program" if current_user.favorite(@program)
+  def like
+    @program.liked_by current_user
+    flash[:notice] = "You've successfully liked this program, find it in your dashboard to easily apply to later"
+    redirect_to @program
+  end
+
+  def unlike
+    @program.unliked_by current_user
+    flash[:notice] = "You've successfully unliked this program"
+    redirect_to @program
   end
 
   private
