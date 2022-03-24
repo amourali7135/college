@@ -15,8 +15,16 @@
         <p>Program cost: <%= @program.cost %> </p>
         <div class="row align-items-center justify-content-center py-2">
           <div class="row">
-            <%= link_to 'like', like_program_path(@program), method: :put, class: 'btn btn-primary' %>
-            <%= link_to 'unlike', unlike_program_path(@program), method: :put, class: 'btn btn-primary' %>
+            <% if !current_user.find_liked_items.include?(@program) %>
+              <div>
+                <%= link_to 'like', like_program_path(@program), method: :put, class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+            <% if current_user.find_liked_items.include?(@program) %>
+              <div>
+                <%= link_to 'unlike', unlike_program_path(@program), method: :put, class: 'btn btn-primary' %>
+              </div>
+            <% end %>
           </div>
         </div>
         <p> <%= link_to 'Apply to this program', new_program_application_path(@program, @application), class: 'btn btn-primary' %> </p>

@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   
   def user_dashboard
   @applications = Application.where(user_id: current_user.id)#.includes([:program])
-  
+  @programs = current_user.find_liked_items
     if !current_user || current_user.Employer?
       flash[:notice] = "Only students can access a user dashboard"
       redirect_to root_path
