@@ -4,7 +4,7 @@ class Program < ApplicationRecord
   has_many :applications, inverse_of: :program
   accepts_nested_attributes_for :applications
   acts_as_votable
-
+  acts_as_taggable_on :occupation_taggings, :format_taggings
 
   validates :title, presence: true, length: { minimum: 10 }
   validates :headline, presence: true, length: { minimum: 10 }
@@ -43,11 +43,11 @@ class Program < ApplicationRecord
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 
   def self.career_category
-    ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', ]
+    ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', 'Manufacturing', 'Aerospace', 'Merchandising', 'Sales', 'Marketing', 'Accounting', 'Law/legal', 'Law enforcement',  ]
   end
 
   def self.program_format
-    ['Internship', 'Apprenticeship', 'Certification program', 'Degree', 'Remote program', 'Class',  ]
+    ['Internship', 'Apprenticeship', 'Certification program', 'Degree', 'Remote program', 'Class', 'Workshop', 'Shadowing program' ]
   end
 
   def self.length

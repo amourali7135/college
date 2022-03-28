@@ -50,6 +50,8 @@ gem 'htmlbeautifier'
 gem 'erb_lint'
 # For saving favorite programs and applications.
 gem 'acts_as_votable'
+# For tagging important things like categories for easier search
+gem 'acts-as-taggable-on', '~> 9.0'
 
 
 group :development, :test do

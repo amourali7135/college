@@ -105,6 +105,7 @@ class ProgramsController < ApplicationController
         :essay_two_needed,
         :essay_three_needed,
         :status,
+        :tag_list
       )
   end
 end
