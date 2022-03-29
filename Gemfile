@@ -52,6 +52,8 @@ gem 'erb_lint'
 gem 'acts_as_votable'
 # For tagging important things like categories for easier search
 gem 'acts-as-taggable-on', '~> 9.0'
+# For multi-select functionality
+
 
 
 group :development, :test do

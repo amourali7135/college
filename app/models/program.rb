@@ -4,7 +4,7 @@ class Program < ApplicationRecord
   has_many :applications, inverse_of: :program
   accepts_nested_attributes_for :applications
   acts_as_votable
-  acts_as_taggable_on :occupation_taggings, :format_taggings
+  acts_as_taggable_on :occupation_taggings
 
   validates :title, presence: true, length: { minimum: 10 }
   validates :headline, presence: true, length: { minimum: 10 }
@@ -39,6 +39,7 @@ class Program < ApplicationRecord
   # validates :application_due_date, :future_date
   validate :future_date_application?
   validate :future_date_start?, if: :rolling?
+  validates :occupation_tagging_list, presence: true
 
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 

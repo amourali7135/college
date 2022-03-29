@@ -2,7 +2,6 @@ class ProgramsController < ApplicationController
   before_action :set_program, only: %i[show edit update destroy like unlike]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-
   def index
     @programs = Program.where(status: :Active).includes([:user])
   end
@@ -25,7 +24,7 @@ class ProgramsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { render "programs/show" }
+      format.html { render 'programs/show' }
       format.js { render layout: false } # Add this line to you respond_to block
     end
   end
@@ -46,13 +45,14 @@ class ProgramsController < ApplicationController
     redirect_to business_dashboard_path
   end
 
-  def edit 
-  
+  def edit
+   
   end
 
   def like
     @program.liked_by current_user
-    flash[:notice] = "You've successfully liked this program, find it in your dashboard to easily apply to later"
+    flash[:notice] =
+      "You've successfully liked this program, find it in your dashboard to easily apply to later"
     redirect_to @program
   end
 
@@ -105,7 +105,9 @@ class ProgramsController < ApplicationController
         :essay_two_needed,
         :essay_three_needed,
         :status,
-        :tag_list
+        :career_category,
+        :program_format,
+        :occupation_tagging_list,
       )
   end
 end
