@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2022_03_28_181934) do
     t.integer "status"
     t.string "time_requirement"
     t.boolean "job_guaranteed", null: false
-    t.string "career_category"
     t.string "program_format"
     t.boolean "relocation_assistance", null: false
     t.bigint "user_id", null: false

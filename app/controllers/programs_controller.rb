@@ -3,7 +3,12 @@ class ProgramsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @programs = Program.where(status: :Active).includes([:user])
+    #temporary, fix this bullshit tagging system later when search is up and running
+    if params[:tag].present?
+      @programs = Program.tagged_with(params[:tag]).includes([:user])
+    else
+      @programs = Program.where(status: :Active).includes([:user])
+    end
   end
 
   def new

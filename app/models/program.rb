@@ -33,7 +33,7 @@ class Program < ApplicationRecord
   # validates :active, inclusion: [true, false], exclusion: [nil]
   validates :time_requirement, presence: true
   validates :job_guaranteed, inclusion: [true, false], exclusion: [nil]
-  validates :career_category, presence: true
+  # validates :career_category, presence: true
   validates :program_format, presence: true
   validates :relocation_assistance, inclusion: [true, false], exclusion: [nil]
   # validates :application_due_date, :future_date

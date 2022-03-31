@@ -3,9 +3,9 @@
     <h2>Create your program so that potential students can apply</h2>
     <p>Please provide the following details about your program</p>
     <%= simple_form_for @program do |f|%>
-      <%= f.input :career_category, label: "Please pick the career category that best applies to this program", collection: Program.career_category %>
+      <%#= f.input :career_category, label: "Please pick the career category that best applies to this program", collection: Program.career_category %>
+      <%= f.input :occupation_tagging_list, collection: Program.career_category, label: "Please pick the career category that best applies to this program" %>
       <%= f.input :program_format, label: "Please pick the format that best applies to this program", collection: Program.program_format %>
-      <%= f.input :occupation_tagging_list, collection: Program.career_category,  label: "Please pick the career category that best applies to this program TEST" %>
       <%= f.input :title, label:  "What would you like to name your program?", placeholder: "4-week long carpeting crash course" %>
       <%= f.input :headline, label: "Provide a one sentence summary about your program to garner interest", placeholder: "Learn carpeting basics 101" %>
       <%= f.input :description, label: "Provide an in-depth description about what your program has to offer potential students", placeholder: "We're offering a four-week long crash course for students to learn about the basics of carpeting.  It's a full-time class of four located in the heart of New York City.  No experience is necessary, must be at least 18, etc." %>

@@ -15,8 +15,6 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-
-
 import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
 import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
 import { initProgramform, _initProgramform } 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :applications, except: :index
   end
+  
 
   get 'about', to: 'pages#about', as: 'about'
   get 'help', to: 'pages#help', as: 'help'

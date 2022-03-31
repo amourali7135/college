@@ -2,7 +2,7 @@ require 'faker'
 
 puts 'Destroy everything'
 
-# Application.destroy_all
+Application.destroy_all
 Program.destroy_all
 User.destroy_all
 
@@ -75,8 +75,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -112,8 +113,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -147,8 +149,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -181,8 +184,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -217,8 +221,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -254,8 +259,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -289,8 +295,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )
@@ -323,8 +330,9 @@ program =
     nationals_only: true,
     time_requirement: Program.time_requirement.sample(1),
     job_guaranteed: false,
-    career_category: Program.career_category.sample(1),
+    # career_category: Program.career_category.sample(1),
     program_format: Program.program_format.sample(1),
+    occupation_tagging_list: Program.career_category.sample(1),
     relocation_assistance: false,
     user_id: User.first.id,
   )

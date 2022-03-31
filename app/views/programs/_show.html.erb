@@ -13,6 +13,9 @@
         <p>Length of program: <%= @program.length %> </p>
         <p>Minimum age required for applicants: <%= @program.minimum_age %> </p>
         <p>Program cost: <%= @program.cost %> </p>
+        <p>Tag check: <%= @program.occupation_tagging_list.each do |tag| %></p>
+        <%= link_to tag, programs_path(tag: tag) %>
+        <% end %>
         <div class="row align-items-center justify-content-center py-2">
           <div class="row">
             <% if !current_user.find_liked_items.include?(@program) %>
