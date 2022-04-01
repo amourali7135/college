@@ -43,6 +43,17 @@ class Program < ApplicationRecord
 
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :title, :description, :location, :rolling, :remote, :length, : ],
+    associated_against: {
+      occupation_tagging_list: [:program],
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def self.career_category
     ['Air conditioning and heating', 'Carpeting', 'Construction', 'Food prep', 'Health care and medicine', 'Hospitality', 'HVAC', 'IT', 'Military', 'Software engineering', 'Manufacturing', 'Aerospace', 'Merchandising', 'Sales', 'Marketing', 'Accounting', 'Law/legal', 'Law enforcement',  ]
   end

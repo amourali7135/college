@@ -52,8 +52,10 @@ gem 'erb_lint'
 gem 'acts_as_votable'
 # For tagging important things like categories for easier search
 gem 'acts-as-taggable-on', '~> 9.0'
-# For multi-select functionality
-
+# For multi-select functionality...find a select2 alternative that works later on.
+# gem...
+# For basic search functionality on the program model.  Switch to ES later if advanced features needed.
+gem 'pg_search'
 
 
 group :development, :test do
