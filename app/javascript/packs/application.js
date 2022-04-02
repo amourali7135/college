@@ -17,8 +17,9 @@ import "bootstrap"
 
 import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
 import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
-import { initProgramform, _initProgramform } 
+import { initProgramform, _initProgramform }
 from '../functions/init_programform';
+import { initAutocomplete, _initAutocomplete } from '../functions/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
@@ -26,6 +27,8 @@ document.addEventListener('turbolinks:load', () => {
     initUserformbusiness();
     initUserformstudent();
     initProgramform();
+    initAutocomplete();
+    
   });
 
 

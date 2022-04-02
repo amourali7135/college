@@ -4,6 +4,7 @@ class ProgramsController < ApplicationController
 
   def index
     #temporary, fix this bullshit tagging system later when search is up and running
+    #Also, figure out a way to include near method in pg_search
     if params[:tag].present?
       @programs = Program.tagged_with(params[:tag]).includes([:user])
     else

@@ -56,6 +56,8 @@ gem 'acts-as-taggable-on', '~> 9.0'
 # gem...
 # For basic search functionality on the program model.  Switch to ES later if advanced features needed.
 gem 'pg_search'
+# For geocoding + better search results for users
+gem "geocoder"
 
 
 group :development, :test do

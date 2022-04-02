@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2022_03_28_181934) do
     t.boolean "rolling", null: false
     t.date "application_due_date"
     t.string "location"
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "remote", null: false
     t.integer "spots"
     t.text "requirements"

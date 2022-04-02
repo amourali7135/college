@@ -43,10 +43,13 @@ class Program < ApplicationRecord
 
   enum status: { Active: 0, Temporarily_paused: 1, Permanently_closed: 2 }, _default: "Active"
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
 
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :title, :description, :location, :rolling, :remote, :length, : ],
+    against: [ :title, :description, :location, :rolling, :remote, :length ],
     associated_against: {
       occupation_tagging_list: [:program],
     },

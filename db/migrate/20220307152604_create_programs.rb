@@ -7,6 +7,8 @@ class CreatePrograms < ActiveRecord::Migration[6.1]
       t.boolean :rolling, null: false
       t.date :application_due_date
       t.string :location
+      t.float :latitude
+      t.float :longitude
       t.boolean :remote, null: false
       t.integer :spots
       t.text :requirements
