@@ -4,12 +4,12 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 import "controllers"
@@ -23,14 +23,25 @@ import { initAutocomplete, _initAutocomplete } from '../functions/init_autocompl
 import { initUserform, _initUserform } from '../functions/init_userform';
 
 
-document.addEventListener('turbolinks:load', () => {
-    // Call your functions here, e.g:
-    // initSelect2();
-    // initUserformbusiness();
-    // initUserformstudent();
-    initProgramform();
-    initAutocomplete();
-    initUserform();
-  });
+// Original before removing turbolinks
+// document.addEventListener('turbolinks:load', () => {
+//     // Call your functions here, e.g:
+//     // initSelect2();
+//     // initUserformbusiness();
+//     // initUserformstudent();
+//     // initUserform();
+//   });
 
+// my own experiment 
+document.addEventListener("DOMContentLoaded", () => {
+  // Your code to run since DOM is loaded and ready
+  initProgramform();
+  initUserform();
+  initAutocomplete();
+});
+
+
+
+  
+  
 
