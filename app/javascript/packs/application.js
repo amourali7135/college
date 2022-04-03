@@ -15,20 +15,22 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
-import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
+// import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
+// import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
 import { initProgramform, _initProgramform }
 from '../functions/init_programform';
 import { initAutocomplete, _initAutocomplete } from '../functions/init_autocomplete';
+import { initUserform, _initUserform } from '../functions/init_userform';
+
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     // initSelect2();
-    initUserformbusiness();
-    initUserformstudent();
+    // initUserformbusiness();
+    // initUserformstudent();
     initProgramform();
     initAutocomplete();
-    
+    initUserform();
   });
 
 
