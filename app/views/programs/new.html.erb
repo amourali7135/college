@@ -11,7 +11,7 @@
       <%= f.input :description, label: "Provide an in-depth description about what your program has to offer potential students", placeholder: "We're offering a four-week long crash course for students to learn about the basics of carpeting.  It's a full-time class of four located in the heart of New York City.  No experience is necessary, must be at least 18, etc." %>
       <%= f.input :requirements, label: "What are the requirements that applicants need to have in order to apply successfully?", placeholder: 'There are no pre-requisites other than having enthusiasm to learn!' %>
       <div id="geocoder" >
-      <%= f.input :location, label: "Where is this program located?", placeholder: "1 Rodeo Drive Beverly Hills California", input_html: { data: { geocoder_target: "location" }, class: "d-none" }, wrapper_html: {  } %>
+      <%= f.input :location, label: "Where is this program located?", placeholder: "1 Rodeo Drive Beverly Hills California", input_html: { data: { geocoder_target: "location" }, class: "d-none" }, wrapper_html: { id: :location_label } %>
       </div>
       <pre id="result", class="d-none" ></pre>
       <%= f.input :rolling, label: "Are potential students allowed to apply at anytime?  Or is there a specific due date?" %>

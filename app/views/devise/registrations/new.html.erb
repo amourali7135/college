@@ -15,7 +15,10 @@
         <div id="organization_details" style="display:none;">
           <%= f.input :organization_name, required: true, label: "What's the name of your organization?", placeholder: "Plumbing Incorporated" %>
         </div>
-        <%= f.input :location, required: true, wrapper_html: { id: :location_label, style: "display:none" }, placeholder: "Los Angeles, California", label: "Placeholder label?" %>
+        <div id="geocoder" style="display:none" >
+          <%= f.input :location, required: true, wrapper_html: { id: :location_label, style: "display:none" }, input_html: { data: { geocoder_target: "location" }, class: "d-none" } %>
+        </div>
+        <pre id="result", class="d-none" ></pre>
         <div id="student_details" style="display:none;">
           <%= f.input :age, required: true %>
           <%= f.input :bio, label: "Please tell us and potentially the heads of programs a little bit about yourself" %>
