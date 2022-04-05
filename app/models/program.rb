@@ -49,7 +49,7 @@ class Program < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :title, :description, :location, :rolling, :remote, :length ],
+    against: [ :title, :description, :location, :rolling, :remote, :length, :headline, :cost, :salary, :program_format ],
     associated_against: {
       occupation_tagging_list: [:program],
     },

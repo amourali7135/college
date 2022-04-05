@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   resources :programs do
     member do
-      put "like", to: "programs#like", as: 'like'
-      put "unlike", to: "programs#unlike", as: 'unlike'
+      put 'like', to: 'programs#like', as: 'like'
+      put 'unlike', to: 'programs#unlike', as: 'unlike'
     end
     resources :applications, except: :index
   end
-  
+
+  get '/search' => 'search#index'
 
   get 'about', to: 'pages#about', as: 'about'
   get 'help', to: 'pages#help', as: 'help'

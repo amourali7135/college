@@ -1,19 +1,20 @@
 <section class="program-index-search">
-  <div class="container">
-    <p class="row justify-content-center">
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Show search and filtering options
-      </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
-          <%= f.input :career_category, label: "Which career category are you looking for a program for?", collection: Program.career_category %>
-          <%#= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
-          <%= link_to "Reset", programs_path, remote: true  %>
-          <%= f.submit 'Submit', class: 'btn btn-primatruery'%>
-        <% end %>
-      </div>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-sm-11 card p-2 m-2 bg-light ">
+      <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
+        <%= f.input :career_category, label: "Which career category are you interested in finding for a program for?", required: false, collection: Program.career_category %>
+        <div id="geocoder" >
+          <%= f.input :location, label: "Where are you looking for a program?", required: false, wrapper_html: { id: :location_label}, input_html: { data: { geocoder_target: "location" }, class: "d-none" } %>
+        </div>
+        <pre id="result", class="d-none" ></pre>
+        <div class="flex-container">
+        <%= f.input :remote, as: :select, label: "Do you want a remote only program?", required: false %>
+        <%= f.input :remote, as: :boolean, checked_value: true, unchecked_value: false, required: false, label: "Do you want a remote only program?", required: false %>
+        </div>
+        <%#= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
+        <%= f.submit 'Submit', class: 'btn btn-primary'%>
+        <%= link_to "Reset", programs_path, remote: true  %>
+      <% end %>
     </div>
   </div>
 </section>
@@ -30,3 +31,5 @@
     </div>
   </div>
 </section>
+
+<%#  html: { class: 'form-horizontal' }, wrapper: :horizontal_form %>
