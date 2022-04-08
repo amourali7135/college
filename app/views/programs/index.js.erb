@@ -1,0 +1,9 @@
+function replacePrograms (innerHTML) {
+  const programs = document.getElementById('programs');
+  programs.innerHTML = innerHTML;
+}
+replacePrograms("<%= render partial: 'shared/program_card_index', locals: {program: program} %>");
+
+
+
+<%# document.querySelector(#programs).innerHTML = ("<%= escape_javascript(render partial: 'shared/program_card_index', locals: {program: program} )%>"); %>

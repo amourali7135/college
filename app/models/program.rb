@@ -1,4 +1,5 @@
 class Program < ApplicationRecord
+  include PgSearch::Model
   belongs_to :user
   #  I had to do inverse of and accepts nested to let applications access program parent attributes for its validations
   has_many :applications, inverse_of: :program
@@ -46,13 +47,19 @@ class Program < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  # title, description, headline, program_format
+  # pg_search_scope :global_search,
+  #   against: [ :location, :rolling, :remote, :length, :cost, :salary, :program_format, :nationals_only, :status, :time_requirement ],
+  #   associated_against: {
+  #     occupation_tagging_list: [:program_format],
+  #   },
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 
-  include PgSearch::Model
-  pg_search_scope :global_search,
-    against: [ :title, :description, :location, :rolling, :remote, :length, :headline, :cost, :salary, :program_format ],
-    associated_against: {
-      occupation_tagging_list: [:program],
-    },
+  #experimental pg_search to get shit working
+    pg_search_scope :global_search,
+    against: [ :program_format, :time_requirement ],
     using: {
       tsearch: { prefix: true }
     }
@@ -108,6 +115,8 @@ class Program < ApplicationRecord
       errors.add(:start_date, "The start date must be in the future!")
     end
   end
+
+  # scopes?
 
   # def auto_finish
   #   if application_due_date > Date.today

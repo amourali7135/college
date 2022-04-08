@@ -3,13 +3,20 @@ class ProgramsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    #temporary, fix this bullshit tagging system later when search is up and running
-    #Also, figure out a way to include near method in pg_search.  This is very important.I imagine a conditional and cleverness.
-    if params[:tag].present?
-      @programs = Program.tagged_with(params[:tag]).includes([:user])
+    if params["search"].present?
+      # @filter = params["search"]["title"].concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["location"]]).concat([params["search"]["rolling"]]).concat([params["search"]["length"]]).concat([params["search"]["headline"]]).concat([params["search"]["cost"]]).concat([params["search"]["salary"]]).concat([params["search"]["program_format"]]).concat([params["search"]["nationals_only"]]).concat([params["search"]["status"]]).concat([params["search"]["time_requirement"]]).concat([params["search"]["program_format"]]).concat([params["search"]["occupation_tagging_list"]]).flatten.reject(&:blank?)
+      # @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
+      @filter = params["search"]["program_format"].concat([params["search"]["length"]]).split(',').flatten.reject(&:blank?)
+      # .concat([params["search"]["length"]]).flatten.reject(&:blank?)
+      @programs = Program.global_search(@filter)
     else
       @programs = Program.where(status: :Active).includes([:user])
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    # raise
   end
 
   def new
@@ -114,6 +121,7 @@ class ProgramsController < ApplicationController
         :career_category,
         :program_format,
         :occupation_tagging_list,
+        :search
       )
   end
 end
