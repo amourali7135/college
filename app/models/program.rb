@@ -59,7 +59,7 @@ class Program < ApplicationRecord
 
   #experimental pg_search to get shit working
     pg_search_scope :global_search,
-    against: [ :program_format, :time_requirement ],
+    against: [ :program_format, :length, :remote, :location ],
     using: {
       tsearch: { prefix: true }
     }

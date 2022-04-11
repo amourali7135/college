@@ -4,18 +4,17 @@
       <div class="col-sm-11 card p-2 m-2 bg-light ">
         <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
           <div class="row row-cols-lg-auto g-3">
-            <%= f.input :occupation_tagging_list, label: "Which career category are you looking for a program to do?", collection: Program.career_category, required: false %>
+            <%#= f.input :occupation_tagging_list, label: "Which career category are you looking for a program to do?", collection: Program.career_category, required: false %>
             <div id="geocoder" >
-              <%= f.input :location, label: "Where are you looking for a program?", required: false, wrapper_html: { id: :location_label}, input_html: { data: { geocoder_target: "location" }, class: "d-none" } %>
+              <%= f.input :location, label: "Where are you looking for a program?", required: false, wrapper_html: { id: :location_label}, input_html: { data: { geocoder_target: "location" } } %>
+              <pre id="result", class="d-none" ></pre>
             </div>
           </div>
-          <pre id="result", class="d-none" ></pre>
           <%= f.input :remote, as: :select, label: "Do you want a remote only program?", required: false %>
-          <%= f.input :remote, as: :boolean, checked_value: true, unchecked_value: false, required: false, label: "Do you want a remote only program?", required: false %>
+          <%#= f.input :remote, as: :boolean, checked_value: true, unchecked_value: false, required: false, label: "Do you want a remote only program?", required: false %>
           <%= f.input :length, label: "Would you like to filter by program length?", collection: Program.length, required: false %>
           <%= f.input :program_format, label: "What kind of program are you looking for?", collection: Program.program_format, required: false %>
-          <%= f.input :time_requirement, label: "Would you like to filter by time requirement?", collection: Program.time_requirement, required: false %>
-          <%#= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
+          <%#= f.input :time_requirement, label: "Would you like to filter by time requirement?", collection: Program.time_requirement, required: false %>
           <%= f.submit 'Submit', class: 'btn btn-primary'%>
           <%= link_to "Reset", programs_path %>
         <% end %>

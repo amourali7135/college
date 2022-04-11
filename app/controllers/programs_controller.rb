@@ -3,12 +3,22 @@ class ProgramsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params["search"].present?
-      # @filter = params["search"]["title"].concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["location"]]).concat([params["search"]["rolling"]]).concat([params["search"]["length"]]).concat([params["search"]["headline"]]).concat([params["search"]["cost"]]).concat([params["search"]["salary"]]).concat([params["search"]["program_format"]]).concat([params["search"]["nationals_only"]]).concat([params["search"]["status"]]).concat([params["search"]["time_requirement"]]).concat([params["search"]["program_format"]]).concat([params["search"]["occupation_tagging_list"]]).flatten.reject(&:blank?)
-      # @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
-      @filter = params["search"]["program_format"].concat([params["search"]["length"]]).split(',').flatten.reject(&:blank?)
-      # .concat([params["search"]["length"]]).flatten.reject(&:blank?)
-      @programs = Program.global_search(@filter)
+    # params["search"].values !!!
+    if params["search"].present? && params["search"]["location"].present?
+      #this one works, but why?  The fuck?  
+      @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
+
+      #experiment with these ones below
+      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]]).concat([params["search"]["length"]]).split(',').flatten.reject(&:blank?)  #array to string issue, but are split up right.
+      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').join(', ').flatten.reject(&:blank?) #to_s causes combo issue
+      # @filter = params["search"]["length"].concat(params["search"]["program_format"]).flatten.reject(&:blank?)
+      # @filter = params["search"]["length"].concat(params["search"]["program_format"]) #mixing up params sections into each other
+      # @filter = params["search"]["length"].concat([params["search"]["program_format"]])  #no conversion of array into string
+      @programs = Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"])
+    elsif params["search"].present? 
+      @filter = params["search"]["location"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).concat([params["search"]["program_format"]].to_s).split(',').flatten.reject(&:blank?)
+
+      @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
     else
       @programs = Program.where(status: :Active).includes([:user])
     end
@@ -16,7 +26,7 @@ class ProgramsController < ApplicationController
       format.html
       format.js
     end
-    # raise
+    raise
   end
 
   def new
@@ -100,7 +110,6 @@ class ProgramsController < ApplicationController
         :start_date,
         :virtual_components,
         :housing_provided,
-        :essay,
         :essay_question_one,
         :essay_question_two,
         :essay_question_three,
@@ -109,16 +118,13 @@ class ProgramsController < ApplicationController
         :cost,
         :certificate_awarded,
         :nationals_only,
-        :active,
         :time_requirement,
         :job_guaranteed,
-        :category,
         :relocation_assistance,
         :essay_one_needed,
         :essay_two_needed,
         :essay_three_needed,
         :status,
-        :career_category,
         :program_format,
         :occupation_tagging_list,
         :search

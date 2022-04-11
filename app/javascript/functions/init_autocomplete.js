@@ -10,13 +10,16 @@ const initAutocomplete = () => {
   });
 
   geocoder.addTo("#geocoder");
+  //Trying to fix this shit to be submitted on the form.
 
   // Get the geocoder results container.
-  const results = document.getElementById("result");
+  const results = document.getElementById("result"); 
+  const experiment = document.getElementById("search_location");
 
   // Add geocoder result to container.
   geocoder.on("result", (e) => {
     results.innerText = JSON.stringify(e.result, null, 2);
+    experiment.innerText = results.innerText.JSON.stringify(e.result, null, 2);
   });
 
   // Clear results container when search is cleared.
