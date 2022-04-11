@@ -4,19 +4,15 @@ class ProgramsController < ApplicationController
 
   def index
     # params["search"].values !!!
+    # multiple values on art project was concacetannating arrays, but one is a string...so concat won't work!  FUCK!
     if params["search"].present? && params["search"]["location"].present?
       #this one works, but why?  The fuck?  
-      @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
+      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
+      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format]].reject(&:blank?)
 
-      #experiment with these ones below
-      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]]).concat([params["search"]["length"]]).split(',').flatten.reject(&:blank?)  #array to string issue, but are split up right.
-      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').join(', ').flatten.reject(&:blank?) #to_s causes combo issue
-      # @filter = params["search"]["length"].concat(params["search"]["program_format"]).flatten.reject(&:blank?)
-      # @filter = params["search"]["length"].concat(params["search"]["program_format"]) #mixing up params sections into each other
-      # @filter = params["search"]["length"].concat([params["search"]["program_format"]])  #no conversion of array into string
       @programs = Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"])
     elsif params["search"].present? 
-      @filter = params["search"]["location"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).concat([params["search"]["program_format"]].to_s).split(',').flatten.reject(&:blank?)
+      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format]].reject(&:blank?)
 
       @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
     else
@@ -26,7 +22,7 @@ class ProgramsController < ApplicationController
       format.html
       format.js
     end
-    raise
+    # raise
   end
 
   def new
