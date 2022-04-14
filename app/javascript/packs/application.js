@@ -19,8 +19,8 @@ import "bootstrap"
 // import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
 import { initProgramform, _initProgramform }
 from '../functions/init_programform';
-import { initAutocomplete, _initAutocomplete } from '../functions/init_autocomplete';
 import { initUserform, _initUserform } from '../functions/init_userform';
+import { initAutocomplete, _initAutocomplete } from '../functions/init_autocomplete';
 
 
 // Original before removing turbolinks
