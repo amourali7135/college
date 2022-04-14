@@ -6,7 +6,7 @@
           <div class="row row-cols-lg-auto g-3">
             <%#= f.input :occupation_tagging_list, label: "Which career category are you looking for a program to do?", collection: Program.career_category, required: false %>
             <div id="geocoder" >
-              <%= f.input :location, label: "Where are you looking for a program?", required: false, wrapper_html: { id: :location_label}, input_html: { data: { geocoder_target: "location" } } %>
+              <%= f.input :location, label: "Where are you looking for a program?", required: false, wrapper_html: { id: :location_label }, input_html: { data: { geocoder_target: "location" }  }, as: :hidden %>
               <pre id="result", class="d-none" ></pre>
             </div>
           </div>

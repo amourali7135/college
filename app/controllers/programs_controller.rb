@@ -6,7 +6,6 @@ class ProgramsController < ApplicationController
     # params["search"].values !!!
     # multiple values on art project was concacetannating arrays, but one is a string...so concat won't work!  FUCK!
     if params["search"].present? && params["search"]["location"].present?
-      #this one works, but why?  The fuck?  
       # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format]].reject(&:blank?)
 
