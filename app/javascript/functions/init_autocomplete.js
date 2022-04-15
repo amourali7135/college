@@ -9,6 +9,7 @@ const initAutocomplete = () => {
     types: "country,region,place,postcode,locality,neighborhood",
   });
 
+  if (document.getElementById("geocoder")) {
   geocoder.addTo("#geocoder");
 
   // Get the geocoder results container.
@@ -16,6 +17,7 @@ const initAutocomplete = () => {
   const searchInput = document.getElementById("search_location");
   const mapBoxResults = document.getElementsByClassName("mapboxgl-ctrl-geocoder mapboxgl-ctrl")[0].children[1];
   const userEdit = document.getElementById("user_location");
+  const programLocation = document.getElementById("program_location");
 
   // Add geocoder result to container.
   geocoder.on("result", (e) => {
@@ -25,6 +27,9 @@ const initAutocomplete = () => {
     }
     if (userEdit) {
       userEdit.value = mapBoxResults.value;
+    }
+    if (programLocation) {
+      programLocation.value = mapBoxResults.value;
     }
   });
 
@@ -37,7 +42,11 @@ const initAutocomplete = () => {
     if (userEdit) {
       userEdit.value = "";
     }
+    if (programLocation) {
+      programLocation.value = "";
+    }
   });
+};
 };
 
 export { initAutocomplete };
