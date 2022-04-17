@@ -1,9 +1,12 @@
-function replacePrograms (innerHTML) {
-  const programs = document.getElementById('programs');
-  programs.innerHTML = innerHTML;
-}
-replacePrograms("<%= render partial: 'shared/program_card_index', locals: {program: program} %>");
+<%# function searchPrograms (innerHTML) {
+const programs = document.getElementById('programs');
+programs.innerHTML = innerHTML;
+} %>
 
+<%# document.querySelector("#programs").innerHTML = 
+("<%= j render partial: 'programs/program_card_index', locals: { programs: @programs } %>");   
 
+<%# document.querySelector("#programs").innerHTML = ("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { programs: @programs } ) %>"); 
 
-<%# document.querySelector(#programs).innerHTML = ("<%= escape_javascript(render partial: 'shared/program_card_index', locals: {program: program} )%>"); %>
+<%# searchPrograms("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { program: @programs } ) %>");
+

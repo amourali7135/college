@@ -12,9 +12,10 @@
           </div>
           <%= f.input :remote, as: :select, label: "Do you want a remote only program?", required: false %>
           <%#= f.input :remote, as: :boolean, checked_value: true, unchecked_value: false, required: false, label: "Do you want a remote only program?", required: false %>
-          <%= f.input :length, label: "Would you like to filter by program length?", collection: Program.length, required: false %>
+          <%= f.input :length, label: "Would you like to filter by the program's length?", collection: Program.length, required: false %>
           <%= f.input :program_format, label: "What kind of program are you looking for?", collection: Program.program_format, required: false %>
-          <%#= f.input :time_requirement, label: "Would you like to filter by time requirement?", collection: Program.time_requirement, required: false %>
+          <%= f.input :time_requirement, label: "Would you like to filter by time requirement?", collection: Program.time_requirement, required: false %>
+          <%= f.input :occupation_tagging_list, label: "What type of career category are you looking for?", collection: Program.career_category, required: false %>
           <%= f.submit 'Submit', class: 'btn btn-primary'%>
           <%= link_to "Reset", programs_path %>
         <% end %>
@@ -28,7 +29,7 @@
       <div class="col-12 col-lg-5">
         <div id="programs">
           <% @programs.each do |program| %>
-            <%= render partial: 'shared/program_card_index', locals: {program: program} %>
+            <%= render partial: 'programs/program_card_index', locals: {program: program} %>
           <% end %>
         </div>
       </div>

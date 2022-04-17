@@ -7,19 +7,20 @@ class ProgramsController < ApplicationController
     # multiple values on art project was concacetannating arrays, but one is a string...so concat won't work!  FUCK!
     if params["search"].present? && params["search"]["location"].present?
       # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
-      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format]].reject(&:blank?)
+      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
       @programs = Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"])
     elsif params["search"].present? 
-      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format]].reject(&:blank?)
+      @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
       @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
+      # @programs = Program.global_search(@filter).where(status: :Active)
     else
       @programs = Program.where(status: :Active).includes([:user])
     end
     respond_to do |format|
       format.html
-      format.js
+      format.js ##{ render layout: false }
     end
     # raise
   end

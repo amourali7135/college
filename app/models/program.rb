@@ -47,19 +47,11 @@ class Program < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
-  # title, description, headline, program_format
-  # pg_search_scope :global_search,
-  #   against: [ :location, :rolling, :remote, :length, :cost, :salary, :program_format, :nationals_only, :status, :time_requirement ],
-  #   associated_against: {
-  #     occupation_tagging_list: [:program_format],
-  #   },
-  #   using: {
-  #     tsearch: { prefix: true }
-  #   }
-
-  #experimental pg_search to get shit working
     pg_search_scope :global_search,
-    against: [ :program_format, :length, :remote, :location ],
+    against: [ :program_format, :length, :remote, :location, :time_requirement ],
+      associated_against: {
+        occupation_taggings: [:name],
+    },
     using: {
       tsearch: { prefix: true }
     }

@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col">
         <% @applications.each do |application| %>
-          <%#= render partial: 'shared/program_card_index', locals: {program: program} %>
+          <%#= render partial: 'programs/program_card_index', locals: {program: program} %>
           <%= application.status %>
         <% end %>
       </div>
@@ -35,7 +35,7 @@
       <div class="col-sm-6">
       <span>Your favorite programs that you've previously saved.  Apply now!</span>
         <% @programs.each do |program| %>
-          <%= render partial: 'shared/program_card_index', locals: {program: program} %>
+          <%= render partial: 'programs/program_card_index', locals: {program: program} %>
         <% end %>
       </div>
     </div>
