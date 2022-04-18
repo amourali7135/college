@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-11 card p-2 m-2 bg-light ">
-        <%= simple_form_for :search, url: programs_path, method: "GET" do |f| %>
+        <%= simple_form_for :search, url: programs_path, method: "GET", remote: true do |f| %>
           <div class="row row-cols-lg-auto g-3">
             <%#= f.input :occupation_tagging_list, label: "Which career category are you looking for a program to do?", collection: Program.career_category, required: false %>
             <div id="geocoder" >

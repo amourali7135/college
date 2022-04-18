@@ -1,12 +1,24 @@
 <%# function searchPrograms (innerHTML) {
 const programs = document.getElementById('programs');
 programs.innerHTML = innerHTML;
-} %>
+} 
+
+searchPrograms("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { programs: @programs } ) %>
+
+<%# document.querySelector("#programs").innerHTML = ("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { programs: @programs } ) %>
+
 
 <%# document.querySelector("#programs").innerHTML = 
-("<%= j render partial: 'programs/program_card_index', locals: { programs: @programs } %>");   
+("<%= j render partial: 'programs/program_card_index', locals: { program: program } %>
 
-<%# document.querySelector("#programs").innerHTML = ("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { programs: @programs } ) %>"); 
 
-<%# searchPrograms("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { program: @programs } ) %>");
+function searchPrograms(program) {
+const programs = document.getElementById('programs');
+programs.insertAdjacentHTML("beforeend", program);
+} 
 
+document.getElementById('programs').innerHTML = "";
+
+<% @programs.each do |program| %>
+searchPrograms("<%= escape_javascript(render partial: 'programs/program_card_index', locals: { program: program } ) %>"); 
+<% end %>
