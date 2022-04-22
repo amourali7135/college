@@ -59,7 +59,8 @@ gem 'acts-as-taggable-on', '~> 9.0'
 gem 'pg_search'
 # For geocoding + better search results for users
 gem "geocoder"
-
+# Pagination experiment.
+gem 'pagy'
 
 group :development, :test do
   gem 'pry-byebug'

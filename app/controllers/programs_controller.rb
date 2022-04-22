@@ -9,14 +9,15 @@ class ProgramsController < ApplicationController
       # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
-      @programs = Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"])
+      @pagy, @programs = pagy(Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"]), items: 20)
     elsif params["search"].present? 
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
-      @programs = Program.global_search(@filter).where(status: :Active).includes([:user])
+      @pagy, @programs = pagy(Program.global_search(@filter).where(status: :Active).includes([:user]), items: 20)
       # @programs = Program.global_search(@filter).where(status: :Active)
     else
-      @programs = Program.where(status: :Active).includes([:user])
+      @pagy, @programs = pagy(Program.where(status: :Active).includes([:user]), items: 20)
+      # @programs = Program.where(status: :Active).includes([:user])
     end
     respond_to do |format|
       format.html
