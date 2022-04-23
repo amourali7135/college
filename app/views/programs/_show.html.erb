@@ -17,21 +17,23 @@
         <p>Tag check: <%= @program.occupation_tagging_list.each do |tag| %></p>
           <%= link_to tag, programs_path(tag: tag) %>
         <% end %>
-        <div class="row align-items-center justify-content-center py-2">
-          <div class="row">
-            <% if !current_user.find_liked_items.include?(@program) %>
-              <div>
-                <%= link_to 'like', like_program_path(@program), method: :put, class: 'btn btn-primary' %>
-              </div>
-            <% end %>
-            <% if current_user.find_liked_items.include?(@program) %>
-              <div>
-                <%= link_to 'unlike', unlike_program_path(@program), method: :put, class: 'btn btn-primary' %>
-              </div>
-            <% end %>
+        <div class="container">
+          <div class="row py-2">
+            <div class="favorites", id="favorite_buttons">
+              <% if !current_user.find_liked_items.include?(@program) %>
+                <div id="favorite_button">
+                  <%= link_to 'Save this program for later', like_program_path(@program), remote: true, method: :put, class: 'btn btn-primary', id: "like_button" %>
+                </div>
+              <% end %>
+              <% if current_user.find_liked_items.include?(@program) %>
+                <div id="unfavorite_button">
+                  <%= link_to 'Unsave this program', unlike_program_path(@program), remote: true, method: :put, class: 'btn btn-primary', id: "unlike_button" %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-        <p> <%= link_to 'Apply to this program', new_program_application_path(@program, @application), class: 'btn btn-primary' %> </p>
+        <%= link_to 'Apply to this program', new_program_application_path(@program, @application), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>

@@ -6,7 +6,6 @@ class ProgramsController < ApplicationController
     # params["search"].values !!!
     # multiple values on art project was concacetannating arrays, but one is a string...so concat won't work!  FUCK!
     if params["search"].present? && params["search"]["location"].present?
-      # @filter = params["search"]["program_format"].concat([params["search"]["remote"]].to_s).concat([params["search"]["length"]].to_s).split(',').flatten.reject(&:blank?)
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
       @pagy, @programs = pagy(Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"]), items: 20)
@@ -14,10 +13,8 @@ class ProgramsController < ApplicationController
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
 
       @pagy, @programs = pagy(Program.global_search(@filter).where(status: :Active).includes([:user]), items: 20)
-      # @programs = Program.global_search(@filter).where(status: :Active)
     else
       @pagy, @programs = pagy(Program.where(status: :Active).includes([:user]), items: 20)
-      # @programs = Program.where(status: :Active).includes([:user])
     end
     respond_to do |format|
       format.html
@@ -71,15 +68,20 @@ class ProgramsController < ApplicationController
 
   def like
     @program.liked_by current_user
-    flash[:notice] =
-      "You've successfully liked this program, find it in your dashboard to easily apply to later"
-    redirect_to @program
+    flash[:notice] = "You've successfully liked this program, find it in your dashboard to easily apply to later"
+      respond_to do |format|
+        format.html { redirect_to @program }
+        format.js { render layout: false  }
+      end
   end
 
   def unlike
     @program.unliked_by current_user
     flash[:notice] = "You've successfully unliked this program"
-    redirect_to @program
+    respond_to do |format|
+      format.html { redirect_to @program }
+      format.js { render layout: false }
+    end
   end
 
   private
