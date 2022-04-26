@@ -7,7 +7,7 @@ class ProgramsController < ApplicationController
     # multiple values on art project was concacetannating arrays, but one is a string...so concat won't work!  FUCK!
     if params["search"].present? && params["search"]["location"].present?
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
-
+      
       @pagy, @programs = pagy(Program.global_search(@filter).where(status: :Active).includes([:user]).near(params["search"]["location"]), items: 20)
     elsif params["search"].present? 
       @filter = [params[:search][:location], params[:search][:remote], params[:search][:length], params[:search][:program_format], params[:search][:occupation_tagging_list], params[:search][:time_requirement]].reject(&:blank?)
@@ -21,6 +21,7 @@ class ProgramsController < ApplicationController
       format.js #{ render layout: false }
     end
     # raise
+    @programs_size = Program.where(status: :Active)
   end
 
   def new

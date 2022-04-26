@@ -32,6 +32,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-5">
+        <div id="programs_length">
+          <p><%= @programs.length %> matching programs available of <%= @programs_size.length %> programs</p>
+        </div>
         <div id="programs">
           <% @programs.each do |program| %>
             <%= render partial: 'programs/program_card_index', locals: {program: program} %>
@@ -44,4 +47,3 @@
     </div>
   </div>
 </section>
-<%#  html: { class: 'form-horizontal' }, wrapper: :horizontal_form %>
