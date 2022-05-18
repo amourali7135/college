@@ -24,7 +24,6 @@ class PagesController < ApplicationController
   def user_dashboard
   @applications = Application.where(user_id: current_user.id)#.includes([:user])#.includes([:program])
   # @pagy, @programs = pagy(current_user.find_liked_items, items: 20)
-
   @programs = current_user.find_liked_items
     if !current_user || current_user.Employer?
       flash[:notice] = "Only student users can access a user dashboard"
