@@ -12,8 +12,11 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
+import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
+// import * as bootstrap from "bootstrap"  
+
 
 // import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
 // import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';

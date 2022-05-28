@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
+# Duh
 ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
+gem 'rails', '~> 7.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.3.3'
 # Use Puma as the app server
@@ -61,6 +61,20 @@ gem 'pg_search'
 gem "geocoder"
 # Pagination experiment.
 gem 'pagy'
+# Added after rails 7 upgrade because it's optional now
+gem "sprockets-rails"
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+# Fixing unmet peer dependency for prettier shit
+gem "prettier"
+# Added after rails 7 upgrade to get bootstrap working ala Le Wagon Template
+gem "sassc-rails"
+
+
 
 group :development, :test do
   gem 'pry-byebug'
