@@ -19,8 +19,6 @@ import "bootstrap"
 // import * as bootstrap from "bootstrap"  
 
 
-// import { initUserformbusiness, _initUserformbusiness } from '../functions/init_userformbusiness';
-// import { initUserformstudent, _initUserformstudent } from '../functions/init_userformstudent';
 import { initProgramform, _initProgramform }
 from '../functions/init_programform';
 import { initUserform, _initUserform } from '../functions/init_userform';
