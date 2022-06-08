@@ -13,14 +13,14 @@
         <div class="container">
           <div class="row">
             <div class="col-lg border card">
-              <p>You haven't saved any programs yet, explore them <%= link_to 'Browse Programs', programs_path   %></p>
+              You haven't saved any programs yet, explore them <%= link_to 'Browse Programs Now', programs_path   %>
             </div>
           </div>
         </div>
       </div>
     <% else %>
       <p>The programs that you've previously saved.  Apply to them now!</p>
-      <div class="container">
+      <div class="containe ">
         <div class="row">
           <div class="col-lg-5 border">
             <% @programs.each do |program| %>

@@ -40,3 +40,7 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+
+# Ignore staging areas for Rails 7 in this Rails 6 branch.
+/app/assets/builds/*
+!/app/assets/builds/.keep
